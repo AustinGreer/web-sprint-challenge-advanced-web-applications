@@ -1,25 +1,64 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+
+const initialFormValues = {
+  username: '',
+  password: ''
+}
+
+const initialErrorValues = {
+  username: '',
+  password: ''
+}
 
 const Login = () => {
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
+  const [formValues, setFormValues] = useState(initialFormValues)
+  const [formErrors, setformErrors] = useState('')
+
+  const inputChangeHandler = e => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value
+    })
+  }
 
   useEffect(()=>{
     // make a post request to retrieve a token from the api
     // when you have handled the token, navigate to the BubblePage route
   });
   
-  const error = "";
-  //replace with error state
+  
 
   return (
     <div>
       <h1>Welcome to the Bubble App!</h1>
       <div data-testid="loginForm" className="login-form">
-        <h2>Build login form here</h2>
+        <form>
+          <input
+            type='text'
+            name='username'
+            placeholder='username'
+            data-testid='username'
+            onChange={inputChangeHandler}
+            value={formValues.username}
+          />
+
+          <input
+            type='password'
+            name='password'
+            placeholder='password'
+            data-testid='password'
+            onChange={inputChangeHandler}
+            value={formValues.password}
+          />
+
+          {/* <input
+            type='submit'
+          /> */}
+          <button type='submit'>Login</button>
+        </form>
       </div>
 
-      <p data-testid="errorMessage" className="error">{error}</p>
+      <p data-testid="errorMessage" className="error">{formErrors}</p>
     </div>
   );
 };
