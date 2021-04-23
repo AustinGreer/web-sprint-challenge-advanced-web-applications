@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import axios from 'axios'
+import { axiosWithAuth} from '../utils/axiosWithAuth';
 
 const initialFormValues = {
   username: '',
@@ -24,12 +24,13 @@ const Login = () => {
   const loginHandler = e => {
     e.preventDefault()
 
-    axios
-      .post('http://localhost:5000/api/login', formValues)
+    axiosWithAuth()
+      .post('api/login', formValues)
       .then(res => {
         window.localStorage.setItem('token', res.data.payload) // note - I am not going to stringify since payload comes back as string
         push('/bubblepage')
       })
+
       .catch(err => {
         if(formValues.username === '' || formValues.password === '') {
           setFormError('Username or Password is not valid.')

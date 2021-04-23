@@ -26,11 +26,11 @@ const ColorList = ({ colors, updateColors }) => {
   return (
     <div className="colors-wrap">
       <p>colors</p>
-      <ul>
+      {/* <ul>
         {colors.map(color => <Color key={color.id} editing={editing} color={color} editColor={editColor} deleteColor={deleteColor}/>)}
       </ul>
       
-      { editing && <EditMenu colorToEdit={colorToEdit} saveEdit={saveEdit} setColorToEdit={setColorToEdit} setEditing={setEditing}/> }
+      { editing && <EditMenu colorToEdit={colorToEdit} saveEdit={saveEdit} setColorToEdit={setColorToEdit} setEditing={setEditing}/> } */}
 
     </div>
   );

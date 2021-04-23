@@ -42,14 +42,14 @@ Your finished project must include all of the following requirements. **Unlike o
 #### Authentication
 > *Build a login form to authenticate your users along with all the components and utilities needed to support authentication.*
 
-* [ ] In `Login.js`, build all UI and state functionality needed to capture a username and password.
-* [ ] **Make sure that the input for your username and password includes the data-testid="username" and data-testid="password" attributes. These are needed for codegrade testing.**
-* [ ] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
-* [ ] Construct an AXIOS request that retrieves an auth token from the server when the username `Lambda` and the password `i<3Lambd4` is passed into the request.
-* [ ] Save the token to localStorage.
-* [ ] Build a `axiosWithAuth` module to create an instance of axios with the authentication header.
-* [ ] Build a `PrivateRoute` component and use it to protect the route that renders the `BubblesPage` component.
-* [ ] In `App.js`, build the backend to the logout button. When pressed, the authentication token within localStorage should be removed.
+* [X] In `Login.js`, build all UI and state functionality needed to capture a username and password.
+* [X] **Make sure that the input for your username and password includes the data-testid="username" and data-testid="password" attributes. These are needed for codegrade testing.**
+* [X] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
+* [X] Construct an AXIOS request that retrieves an auth token from the server when the username `Lambda` and the password `i<3Lambd4` is passed into the request.
+* [X] Save the token to localStorage.
+* [X] Build a `axiosWithAuth` module to create an instance of axios with the authentication header.
+* [X] Build a `PrivateRoute` component and use it to protect the route that renders the `BubblesPage` component.
+* [X] In `App.js`, build the backend to the logout button. When pressed, the authentication token within localStorage should be removed.
 
 #### Consuming the API
 > *Add in the axios requests and state changes needed to connect our api to the web application. Consider the effect of authentication on your api requests.*
