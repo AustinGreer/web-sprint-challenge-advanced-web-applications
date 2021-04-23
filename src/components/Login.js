@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import { axiosWithAuth} from '../utils/axiosWithAuth';
+import axios from 'axios'
 
 const initialFormValues = {
   username: '',
@@ -24,8 +24,8 @@ const Login = () => {
   const loginHandler = e => {
     e.preventDefault()
 
-    axiosWithAuth()
-      .post('api/login', formValues)
+    axios
+      .post('http://localhost:5000/api/login', formValues)
       .then(res => {
         window.localStorage.setItem('token', res.data.payload) // note - I am not going to stringify since payload comes back as string
         push('/bubblepage')

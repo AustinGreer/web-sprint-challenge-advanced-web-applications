@@ -3,8 +3,8 @@ import axios from 'axios'
 export const axiosWithAuth = () => {
     return axios.create({
         headers: {
-            Authentication: window.localStorage.getItem('token')
+            Authorization: window.localStorage.getItem('token')
         },
-        baseURL: 'http://localhost:5000'
+        baseURL: 'http://localhost:5000/api'
     })
 }
