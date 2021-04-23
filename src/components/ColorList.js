@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { axiosWithAuth } from '../helpers/axiosWithAuth'
+
+
+import Color from './Color';
+import EditMenu from './EditMenu';
 
 const initialColor = {
   color: "",
@@ -17,7 +21,20 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+    axiosWithAuth()
+      .put(`/colors/${colorToEdit.id}`, colorToEdit)
+      .then(res => {
 
+        // filtering out colors that aren't being edited 
+        const filterEditColor = colors.filter(color => {
+          return color.id !== colorToEdit.id
+        })
+
+        updateColors([...filterEditColor, res.data])
+      })
+      .catch(err => {
+        console.log(err)
+      })
   };
 
   const deleteColor = color => {
@@ -26,11 +43,11 @@ const ColorList = ({ colors, updateColors }) => {
   return (
     <div className="colors-wrap">
       <p>colors</p>
-      {/* <ul>
+      <ul>
         {colors.map(color => <Color key={color.id} editing={editing} color={color} editColor={editColor} deleteColor={deleteColor}/>)}
       </ul>
       
-      { editing && <EditMenu colorToEdit={colorToEdit} saveEdit={saveEdit} setColorToEdit={setColorToEdit} setEditing={setEditing}/> } */}
+      { editing && <EditMenu colorToEdit={colorToEdit} saveEdit={saveEdit} setColorToEdit={setColorToEdit} setEditing={setEditing}/> }
 
     </div>
   );
